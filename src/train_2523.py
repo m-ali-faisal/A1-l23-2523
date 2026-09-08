@@ -6,7 +6,7 @@ import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, r2_score
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
 
 data = pd.read_csv("data/flight_dataset.csv")
 
@@ -22,7 +22,8 @@ data = pd.get_dummies(
 
 X = data.drop("Price", axis=1)
 
-scaler = MinMaxScaler()
+
+scaler = StandardScaler()
 X = scaler.fit_transform(X)
 
 y = data["Price"]
